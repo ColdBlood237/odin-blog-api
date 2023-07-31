@@ -6,7 +6,7 @@ const Comment = require("../models/comment");
 
 exports.comments_list = asyncHandler(async (req, res, next) => {
   const comments = await Comment.find({
-    post: mongoose.Types.ObjectId(req.params.id),
+    post: new mongoose.Types.ObjectId(req.params.id),
   })
     .populate("post")
     .sort({ createdAt: -1 })
@@ -27,10 +27,10 @@ exports.create_comment = [
     const newComment = new Comment({
       username: req.body.username === "" ? "Anonymous" : req.body.username,
       content: req.body.content,
-      post: mongoose.Types.ObjectId(req.params.id),
+      post: new mongoose.Types.ObjectId(req.params.id),
     });
 
-    if (!errors.isLength()) {
+    if (!errors.isEmpty()) {
       res.json(errors);
     } else {
       await newComment.save();

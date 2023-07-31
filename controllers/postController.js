@@ -33,7 +33,7 @@ exports.create_post = [
       const allPosts = await Post.find({ public: true })
         .sort({ createdAt: -1 })
         .exec();
-      res.json(allPosts, errors);
+      res.json(errors);
     } else {
       await newPost.save();
       res.redirect("/posts");
