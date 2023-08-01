@@ -1,6 +1,6 @@
 export default function CommentForm({ post }) {
   return (
-    <div class="flex mx-auto items-center justify-center shadow-lg mt-56 mx-8 mb-4 max-w-lg">
+    <div class="flex mx-auto items-center justify-center shadow-lg mt-8 mx-8 mb-4">
       <form
         method="POST"
         action={`posts/${post._id}/comments`}

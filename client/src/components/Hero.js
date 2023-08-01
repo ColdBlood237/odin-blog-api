@@ -4,7 +4,9 @@ export default function Hero() {
   return (
     <section
       class="w-full bg-cover bg-center py-32"
-      style={{ backgroundImage: `url(${heroImg})` }}
+      style={{
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${heroImg})`,
+      }}
     >
       <div class="container mx-auto text-center text-white">
         <h1 class="text-5xl font-medium mb-6">Welcome to My Blog</h1>

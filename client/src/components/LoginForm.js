@@ -7,11 +7,11 @@ export default function LoginForm() {
     <form
       method="POST"
       action="/admin-login"
-      className="flex max-w-md flex-col gap-4"
+      className="flex max-w-md flex-col gap-4 mx-auto"
     >
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="username" value="Your email" />
+          <Label htmlFor="username" value="Username" />
         </div>
         <TextInput name="username" id="username" required type="text" />
       </div>

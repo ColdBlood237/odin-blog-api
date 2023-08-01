@@ -27,10 +27,13 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div id="posts" className="p-12">
+      <div id="posts" className="m-12">
         {posts.map((post) => (
           <PostCard post={post} />
         ))}
+      </div>
+      <div id="login" className="mx-12 mb-12">
+        <LoginForm />
       </div>
     </>
   );
