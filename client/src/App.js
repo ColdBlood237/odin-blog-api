@@ -5,6 +5,8 @@ import NavbarCTA from "./components/Navbar";
 import Home from "./components/Home";
 import Post from "./components/Post";
 
+import "./index.css";
+
 export default function App() {
   return (
     <div>

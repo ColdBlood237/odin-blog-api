@@ -8,7 +8,9 @@ export default function Home() {
 
   useEffect(() => {
     async function getPosts() {
-      const response = await fetch("http://localhost:3000/posts");
+      const response = await fetch("http://localhost:3000/posts", {
+        mode: "cors",
+      });
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -25,13 +27,10 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div id="posts">
+      <div id="posts" className="p-12">
         {posts.map((post) => (
           <PostCard post={post} />
         ))}
-      </div>
-      <div id="admin-login">
-        <LoginForm />
       </div>
     </>
   );

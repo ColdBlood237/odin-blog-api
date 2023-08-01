@@ -1,7 +1,5 @@
 "use client";
 
-import { Card } from "flowbite-react";
-
 export default function CommentCard({ comment }) {
   return (
     <div class="flex justify-center relative top-1/3">
