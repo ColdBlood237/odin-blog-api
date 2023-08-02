@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import uniqid from "uniqid";
+
 import CommentCard from "./CommentCard";
 import CommentForm from "./CommentForm";
 
@@ -10,7 +12,6 @@ export default function Post() {
     async function getPost() {
       if (window.location) {
         const endpoint = window.location.pathname;
-        console.log(endpoint);
 
         const response = await fetch(`http://localhost:3000${endpoint}`, {
           mode: "cors",
@@ -23,7 +24,6 @@ export default function Post() {
         }
 
         const postFetched = await response.json();
-        console.log(postFetched);
         setPost(postFetched);
       }
     }
@@ -62,14 +62,14 @@ export default function Post() {
           <h2 className="text-3xl font-medium	">Comments</h2>
           <CommentForm post={post} />
           {comments.map((comment) => (
-            <CommentCard comment={comment} />
+            <CommentCard comment={comment} key={uniqid()} />
           ))}
         </>
       ) : (
         <div role="status">
           <svg
             aria-hidden="true"
-            class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+            className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ export default function Post() {
               fill="currentFill"
             />
           </svg>
-          <span class="sr-only">Loading...</span>
+          <span className="sr-only">Loading...</span>
         </div>
       )}
     </div>

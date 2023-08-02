@@ -34,7 +34,7 @@ exports.create_comment = [
       res.json(errors);
     } else {
       await newComment.save();
-      res.redirect(`/posts/${req.params.id}/comments`);
+      res.send("comment added.");
     }
   }),
 ];

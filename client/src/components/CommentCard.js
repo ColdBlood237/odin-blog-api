@@ -2,19 +2,19 @@
 
 export default function CommentCard({ comment }) {
   return (
-    <div class="flex justify-center relative top-1/3 max-w-lg">
-      <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
-        <div class="relative flex gap-4">
-          <div class="flex flex-col w-full">
-            <div class="flex flex-row justify-between">
-              <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">
+    <div className="flex justify-center relative top-1/3 w-full md:w-1/2 lg:w-2/5">
+      <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg w-full">
+        <div className="relative flex gap-4">
+          <div className="flex flex-col w-full">
+            <div className="flex flex-row justify-between">
+              <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">
                 {comment.username}
               </p>
             </div>
-            <p class="text-gray-400 text-sm">{comment.createdAt}</p>
+            <p className="text-gray-400 text-sm">{comment.createdAt}</p>
           </div>
         </div>
-        <p class="-mt-4 text-gray-500">{comment.content}</p>
+        <p className="-mt-4 text-gray-500">{comment.content}</p>
       </div>
     </div>
   );
