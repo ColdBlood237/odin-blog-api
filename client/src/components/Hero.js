@@ -3,14 +3,14 @@ import heroImg from "../images/hero-img.jpg";
 export default function Hero() {
   return (
     <section
-      class="w-full bg-cover bg-center py-32"
+      className="w-full bg-cover bg-center py-32"
       style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${heroImg})`,
       }}
     >
-      <div class="container mx-auto text-center text-white">
-        <h1 class="text-5xl font-medium mb-6">Welcome to My Blog</h1>
-        <p class="text-xl mb-12">
+      <div className="container mx-auto text-center text-white">
+        <h1 className="text-5xl font-medium mb-6">Welcome to My Blog</h1>
+        <p className="text-xl mb-12">
           This blog was created as a project for The Odin Project. It involves
           knowledge about NodeJS and React, in which the former is used as the
           backend and the latter as the frontend. Likewise, both of them talk to

@@ -1,25 +1,66 @@
 "use client";
 
 import { Button, Label, TextInput } from "flowbite-react";
+import { useState } from "react";
+import axios from "axios";
 
-export default function LoginForm() {
+export default function LoginForm({ logged, setLogged }) {
+  const [usernameValue, setUsernameValue] = useState("");
+  const [pwdValue, setPwdValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/admin-login", {
+        username: usernameValue,
+        password: pwdValue,
+      });
+      const { token } = response.data;
+      console.log(token);
+      setLogged(true);
+      localStorage.setItem("authToken", token);
+    } catch (error) {
+      setErrorMessage("Invalid credentials.");
+    }
+  }
+
   return (
     <form
-      method="POST"
-      action="/admin-login"
+      method=""
+      action=""
       className="flex max-w-md flex-col gap-4 mx-auto"
+      onSubmit={handleLogin}
     >
       <div>
         <div className="mb-2 block">
           <Label htmlFor="username" value="Username" />
         </div>
-        <TextInput name="username" id="username" required type="text" />
+        <TextInput
+          value={usernameValue}
+          onChange={(e) => {
+            setUsernameValue(e.target.value);
+          }}
+          name="username"
+          id="username"
+          required
+          type="text"
+        />
       </div>
       <div>
         <div className="mb-2 block">
           <Label htmlFor="password" value="Password" />
         </div>
-        <TextInput name="password" id="password" required type="password" />
+        <TextInput
+          value={pwdValue}
+          onChange={(e) => {
+            setPwdValue(e.target.value);
+          }}
+          name="password"
+          id="password"
+          required
+          type="password"
+        />
       </div>
 
       <Button type="submit">Submit</Button>

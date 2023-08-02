@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+import uniqid from "uniqid";
+
 import Hero from "./Hero";
 import LoginForm from "./LoginForm";
 import PostCard from "./PostCard";
 
-export default function Home() {
+export default function Home({ logged, setLogged }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     async function getPosts() {
-      const response = await fetch("http://localhost:3000/posts", {
+      const response = await fetch("/posts", {
         mode: "cors",
       });
 
@@ -29,12 +31,16 @@ export default function Home() {
       <Hero />
       <div id="posts" className="m-12">
         {posts.map((post) => (
-          <PostCard post={post} />
+          <PostCard post={post} key={uniqid()} />
         ))}
       </div>
-      <div id="login" className="mx-12 mb-12">
-        <LoginForm />
-      </div>
+      {logged ? (
+        <></>
+      ) : (
+        <div id="login" className="mx-12 mb-12">
+          <LoginForm logged={logged} setLogged={setLogged} />
+        </div>
+      )}
     </>
   );
 }
