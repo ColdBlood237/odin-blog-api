@@ -1,17 +1,51 @@
+import axios from "axios";
 import { useState } from "react";
 
-export default function PoostFomr({ logged }) {
+export default function PoostForm({ logged, action }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [publicBool, setPublicBool] = useState(false);
 
+  function submtiHandler(e) {
+    e.preventDefault();
+    createPost();
+  }
+
+  function checkboxHandler(e) {
+    if (e.target.checked) {
+      setPublicBool(true);
+    } else {
+      setPublicBool(false);
+    }
+  }
+
+  async function createPost() {
+    const newPost = { title, content, public: publicBool };
+    const storedToken = localStorage.getItem("authToken");
+    try {
+      await axios.post("/posts", newPost, {
+        headers: {
+          Authorization: storedToken,
+        },
+      });
+      setTitle("");
+      setContent("");
+      window.location = "/";
+    } catch (error) {
+      alert(error);
+    }
+  }
+
   return (
     <div className="flex justify-center px-8 ">
-      <form className="flex flex-col gap-2 my-32 w-full md:w-4/5 lg:w-4/5">
+      <form
+        onSubmit={submtiHandler}
+        className="flex flex-col gap-2 my-32 w-full md:w-4/5 lg:w-4/5"
+      >
         <h1 className="text-3xl text-semibold self-center">New Post</h1>
         <div>
           <label
-            for="title"
+            htmlFor="title"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Title
@@ -30,7 +64,7 @@ export default function PoostFomr({ logged }) {
         </div>
         <div>
           <label
-            for="content"
+            htmlFor="content"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Content
@@ -53,13 +87,11 @@ export default function PoostFomr({ logged }) {
             type="checkbox"
             name="public"
             value={true}
-            onChange={(e) => {
-              e.target.checked ? setPublicBool(true) : setPublicBool(false);
-            }}
+            onChange={checkboxHandler}
             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
           />
           <label
-            for="public"
+            htmlFor="public"
             className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Public

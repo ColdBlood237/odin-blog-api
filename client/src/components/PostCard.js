@@ -29,16 +29,29 @@ export default function PostCard({ logged, post }) {
         {logged ? (
           <div className="flex gap-2">
             <a href={`/posts/${post._id}/edit`}>
-              <i class="fa-solid fa-gear"></i>
+              <i className="fa-solid fa-gear"></i>
             </a>
             <button onClick={deletePost} className="hover:cursor-pointer">
-              <i class="fa-solid fa-trash"></i>
+              <i className="fa-solid fa-trash"></i>
             </button>
           </div>
         ) : (
           <></>
         )}
       </div>
+      {logged ? (
+        post.public ? (
+          <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300 w-fit">
+            Public
+          </span>
+        ) : (
+          <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300 w-fit">
+            Private
+          </span>
+        )
+      ) : (
+        <></>
+      )}
       <p className="font-normal text-gray-700 dark:text-gray-400">
         {post.createdAt}
       </p>
