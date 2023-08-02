@@ -5,6 +5,7 @@ import axios from "axios";
 import NavbarCTA from "./components/Navbar";
 import Home from "./components/Home";
 import Post from "./components/Post";
+import PostForm from "./components/PostForm";
 
 import "./index.css";
 
@@ -41,6 +42,10 @@ export default function App() {
         <Route
           path="/posts/:id"
           element={<Post logged={logged} setLogged={setLogged} />}
+        />
+        <Route
+          path="/posts/:id/edit"
+          element={<PostForm logged={logged} setLogged={setLogged} />}
         />
       </Routes>
     </div>

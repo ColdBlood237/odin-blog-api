@@ -31,11 +31,16 @@ export default function Home({ logged, setLogged }) {
       <Hero />
       <div id="posts" className="m-12">
         {posts.map((post) => (
-          <PostCard post={post} key={uniqid()} />
+          <PostCard logged={logged} post={post} key={uniqid()} />
         ))}
       </div>
       {logged ? (
-        <></>
+        <div className="flex justify-center mb-8">
+          <a href="posts/create" className="mx-auto flex items-center gap-2">
+            <i className="fa-regular fa-square-plus fa-2xl"></i>{" "}
+            <span className="text-xl text-bold">Create a Post</span>
+          </a>
+        </div>
       ) : (
         <div id="login" className="mx-12 mb-12">
           <LoginForm logged={logged} setLogged={setLogged} />
