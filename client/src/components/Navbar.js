@@ -1,8 +1,5 @@
 "use client";
 
-import axios from "axios";
-import { Navbar } from "flowbite-react";
-
 export default function NavbarCTA({ logged, setLogged }) {
   async function handleLogout() {
     localStorage.removeItem("authToken");

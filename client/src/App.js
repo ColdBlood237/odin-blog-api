@@ -43,10 +43,7 @@ export default function App() {
           path="/posts/:id"
           element={<Post logged={logged} setLogged={setLogged} />}
         />
-        <Route
-          path="/posts/:id/edit"
-          element={<PostForm logged={logged} setLogged={setLogged} />}
-        />
+        <Route path="/posts/:id/edit" element={<PostForm logged={logged} />} />
       </Routes>
     </div>
   );

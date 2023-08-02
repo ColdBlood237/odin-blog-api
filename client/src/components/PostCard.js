@@ -16,7 +16,7 @@ export default function PostCard({ logged, post }) {
         },
       });
     } catch (error) {
-      setErrorMessage(error);
+      alert(error.msg);
     }
   }
 
