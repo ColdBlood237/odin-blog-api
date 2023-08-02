@@ -3,7 +3,7 @@ export default function CommentForm({ post }) {
     <div className="flex mx-auto items-center justify-center shadow-lg mt-8 mx-8 mb-4">
       <form
         method="POST"
-        action={`http://localhost:3000/posts/${post._id}/comments`}
+        action={`${post._id}/comments`}
         className="w-full max-w-xl bg-white rounded-lg px-4 pt-2"
       >
         <div className="flex flex-wrap -mx-3 mb-6">

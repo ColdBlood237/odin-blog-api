@@ -34,7 +34,7 @@ exports.create_comment = [
       res.json(errors);
     } else {
       await newComment.save();
-      res.send("comment added.");
+      res.redirect("back");
     }
   }),
 ];

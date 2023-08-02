@@ -12,10 +12,9 @@ export default function Post() {
     async function getPost() {
       if (window.location) {
         const endpoint = window.location.pathname;
+        console.log(endpoint);
 
-        const response = await fetch(`http://localhost:3000${endpoint}`, {
-          mode: "cors",
-        });
+        const response = await fetch(endpoint);
 
         if (!response.ok) {
           const message = `An error occurred: ${response.statusText}`;
@@ -32,12 +31,7 @@ export default function Post() {
       if (window.location) {
         const endpoint = window.location.pathname;
 
-        const response = await fetch(
-          `http://localhost:3000${endpoint}/comments`,
-          {
-            mode: "cors",
-          }
-        );
+        const response = await fetch(`${endpoint}/comments`);
 
         if (!response.ok) {
           const message = `An error occurred: ${response.statusText}`;
