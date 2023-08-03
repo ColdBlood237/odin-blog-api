@@ -31,7 +31,11 @@ export default function CommentForm({ logged, post, commentToEdit }) {
       },
     };
     try {
-      await axios.put(`/posts/${post._id}/comments`, updatedComment, options);
+      await axios.put(
+        `/posts/${post._id}/comments/${_id}`,
+        updatedComment,
+        options
+      );
       window.location.reload();
     } catch (error) {
       console.error(error);

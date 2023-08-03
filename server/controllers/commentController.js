@@ -38,3 +38,32 @@ exports.create_comment = [
     }
   }),
 ];
+
+exports.update_comment = [
+  body("username").trim().escape(),
+  body("content", "Comment cannot be empty.")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    const newComment = new Comment({
+      _id: req.params.comment_id,
+      username: req.body.username === "" ? "Anonymous" : req.body.username,
+      content: req.body.content,
+      post: new mongoose.Types.ObjectId(req.params.post_id),
+    });
+
+    if (!errors.isEmpty()) {
+      res.json(errors);
+    } else {
+      const result = await Comment.findByIdAndUpdate(
+        req.params.comment_id,
+        newComment
+      );
+      res.send(`${result} successfully updated`);
+    }
+  }),
+];
