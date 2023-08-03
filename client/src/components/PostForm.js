@@ -1,17 +1,19 @@
 import axios from "axios";
 import { useState } from "react";
 
-export default function PoostForm({ logged, action }) {
+export default function PostForm({ logged, action }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [publicBool, setPublicBool] = useState(false);
 
   function submtiHandler(e) {
     e.preventDefault();
+
     createPost();
   }
 
   function checkboxHandler(e) {
+    console.log("checked: " + e.target.checked);
     if (e.target.checked) {
       setPublicBool(true);
     } else {
@@ -21,6 +23,7 @@ export default function PoostForm({ logged, action }) {
 
   async function createPost() {
     const newPost = { title, content, public: publicBool };
+    console.log(newPost);
     const storedToken = localStorage.getItem("authToken");
     try {
       await axios.post("/posts", newPost, {
@@ -28,8 +31,6 @@ export default function PoostForm({ logged, action }) {
           Authorization: storedToken,
         },
       });
-      setTitle("");
-      setContent("");
       window.location = "/";
     } catch (error) {
       alert(error);
@@ -86,8 +87,10 @@ export default function PoostForm({ logged, action }) {
             id="public"
             type="checkbox"
             name="public"
-            value={true}
-            onChange={checkboxHandler}
+            defaultChecked={publicBool}
+            onChange={(e) => {
+              setPublicBool(e.target.checked);
+            }}
             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
           />
           <label

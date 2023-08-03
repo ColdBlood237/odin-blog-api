@@ -6,7 +6,7 @@ import LoginForm from "./LoginForm";
 import PostCard from "./PostCard";
 
 export default function Home({ logged, setLogged }) {
-  const [posts, setPosts] = useState([null]);
+  const [posts, setPosts] = useState(["loading"]);
 
   useEffect(() => {
     async function getPosts() {
@@ -42,9 +42,7 @@ export default function Home({ logged, setLogged }) {
 
       const posts = await response.json();
       setPosts(posts);
-      console.log(posts);
     }
-    console.log(logged);
     if (logged) {
       getAllPosts();
     } else {
@@ -55,12 +53,12 @@ export default function Home({ logged, setLogged }) {
   return (
     <>
       <Hero />
-      {posts[0] == null ? (
-        <div class="text-center  m-12">
+      {posts[0] === "loading" ? (
+        <div className="text-center  m-12">
           <div role="status">
             <svg
               aria-hidden="true"
-              class="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+              className="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
               viewBox="0 0 100 101"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +72,26 @@ export default function Home({ logged, setLogged }) {
                 fill="currentFill"
               />
             </svg>
-            <span class="sr-only">Loading...</span>
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      ) : posts.length === 0 ? (
+        <div
+          class="w-fit mx-auto my-16 flex items-center p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+          role="alert"
+        >
+          <svg
+            class="flex-shrink-0 inline w-4 h-4 mr-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+          </svg>
+          <span class="sr-only">Info</span>
+          <div>
+            <span class="font-medium">Oops no posts!</span>
           </div>
         </div>
       ) : (

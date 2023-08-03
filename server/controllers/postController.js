@@ -9,6 +9,11 @@ exports.posts_list = asyncHandler(async (req, res, next) => {
   res.json(allPosts);
 });
 
+exports.all_posts_list = asyncHandler(async (req, res, next) => {
+  const allPosts = await Post.find().sort({ createdAt: -1 }).exec();
+  res.json(allPosts);
+});
+
 exports.create_post = [
   body("title", "Title must be specified.")
     .trim()
@@ -26,13 +31,10 @@ exports.create_post = [
     const newPost = new Post({
       title: req.body.title,
       content: req.body.content,
-      public: req.body.public ? true : false,
+      public: req.body.public,
     });
 
     if (!errors.isEmpty()) {
-      const allPosts = await Post.find({ public: true })
-        .sort({ createdAt: -1 })
-        .exec();
       res.json(errors);
     } else {
       await newPost.save();
@@ -86,6 +88,6 @@ exports.update_post = [
 ];
 
 exports.delete_post = asyncHandler(async (req, res, next) => {
-  await Post.findByIdAndDelete(req.params.id);
-  res.redirect("/posts");
+  const result = await Post.findByIdAndDelete(req.params.id);
+  res.send(`${result} successfully deleted.`);
 });

@@ -31,26 +31,6 @@ passport.use(
   })
 );
 
-// passport.use(
-//   new JWTStrategy(
-//     {
-//       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-//       secretOrKey: process.env.JWT_SECRET,
-//     },
-//     async (jwtPayload, cb) => {
-//       try {
-//         //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
-//         const admin = await Admin.findById(jwtPayload.sub);
-//         if (admin) {
-//           return cb(null, admin);
-//         }
-//       } catch (err) {
-//         return cb(err);
-//       }
-//     }
-//   )
-// );
-
 passport.use(
   new JWTStrategy(
     {
