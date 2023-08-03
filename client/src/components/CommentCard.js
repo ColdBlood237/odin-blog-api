@@ -1,11 +1,28 @@
 "use client";
 
+import axios from "axios";
+
 export default function CommentCard({ logged, comment, setCommentToEdit }) {
   function sendCommentDataToForm() {
     setCommentToEdit(comment);
   }
 
-  function deleteComment() {}
+  async function deleteComment() {
+    const options = {
+      headers: {
+        Authorization: localStorage.getItem("authToken"),
+      },
+    };
+    try {
+      await axios.delete(
+        `/posts/${comment.post}/comments/${comment._id}`,
+        options
+      );
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className="flex justify-center relative top-1/3 w-full md:w-1/2 lg:w-2/5">
