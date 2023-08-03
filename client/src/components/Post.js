@@ -4,8 +4,9 @@ import uniqid from "uniqid";
 import CommentCard from "./CommentCard";
 import CommentForm from "./CommentForm";
 
-export default function Post() {
+export default function Post({ logged }) {
   const [comments, setComments] = useState([]);
+  const [commentToEdit, setCommentToEdit] = useState(null);
   const [post, setPost] = useState(null);
 
   useEffect(() => {
@@ -54,9 +55,18 @@ export default function Post() {
           <h1 className="text-5xl font-semibold	mb-8">{post.title}</h1>
           <p className="my-16">{post.content}</p>
           <h2 className="text-3xl font-medium	">Comments</h2>
-          <CommentForm post={post} />
+          <CommentForm
+            logged={logged}
+            post={post}
+            commentToEdit={commentToEdit}
+          />
           {comments.map((comment) => (
-            <CommentCard comment={comment} key={uniqid()} />
+            <CommentCard
+              logged={logged}
+              comment={comment}
+              setCommentToEdit={setCommentToEdit}
+              key={uniqid()}
+            />
           ))}
         </>
       ) : (

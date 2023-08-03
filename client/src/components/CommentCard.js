@@ -1,6 +1,12 @@
 "use client";
 
-export default function CommentCard({ comment }) {
+export default function CommentCard({ logged, comment, setCommentToEdit }) {
+  function sendCommentDataToForm() {
+    setCommentToEdit(comment);
+  }
+
+  function deleteComment() {}
+
   return (
     <div className="flex justify-center relative top-1/3 w-full md:w-1/2 lg:w-2/5">
       <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg w-full">
@@ -10,6 +16,18 @@ export default function CommentCard({ comment }) {
               <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">
                 {comment.username}
               </p>
+              {logged ? (
+                <div>
+                  <button onClick={sendCommentDataToForm} className="mr-2">
+                    <i className="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button onClick={deleteComment}>
+                    <i className="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
             <p className="text-gray-400 text-sm">{comment.createdAt}</p>
           </div>

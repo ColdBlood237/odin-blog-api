@@ -60,10 +60,7 @@ export default function App() {
           path="/"
           element={<Home logged={logged} setLogged={setLogged} />}
         />
-        <Route
-          path="/posts/:id"
-          element={<Post logged={logged} setLogged={setLogged} />}
-        />
+        <Route path="/posts/:id" element={<Post logged={logged} />} />
         <Route
           path="/posts/:id/edit"
           element={<PostForm logged={logged} action="edit" />}
