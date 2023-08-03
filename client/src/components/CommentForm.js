@@ -1,7 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function CommentForm({ logged, post, commentToEdit }) {
+export default function CommentForm({
+  logged,
+  post,
+  commentToEdit,
+  setCommentToEdit,
+}) {
   const [username, setUsername] = useState("");
   const [content, setContent] = useState("");
   const [_id, set_id] = useState("");
@@ -57,6 +62,12 @@ export default function CommentForm({ logged, post, commentToEdit }) {
     }
   }
 
+  function cancelEdits() {
+    setCommentToEdit(null);
+    setUsername("");
+    setContent("");
+  }
+
   return (
     <div className="flex mx-auto items-center justify-center shadow-lg mt-8 mx-8 mb-4">
       <form
@@ -87,10 +98,21 @@ export default function CommentForm({ logged, post, commentToEdit }) {
           <div className="w-full md:w-full flex items-start md:w-full px-3">
             <div className="flex items-start w-1/2 text-gray-700 px-2 mr-auto"></div>
             <div className="-mr-1">
+              {commentToEdit !== null ? (
+                <button
+                  onClick={cancelEdits}
+                  type="button"
+                  class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                >
+                  Cancel
+                </button>
+              ) : (
+                <></>
+              )}
               <input
                 type="submit"
                 className="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100"
-                value="Post Comment"
+                value={commentToEdit !== null ? "Edit Comment" : "Post Comment"}
               />
             </div>
           </div>

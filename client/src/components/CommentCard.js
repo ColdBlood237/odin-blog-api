@@ -18,9 +18,13 @@ export default function CommentCard({ logged, comment, setCommentToEdit }) {
               </p>
               {logged ? (
                 <div>
-                  <button onClick={sendCommentDataToForm} className="mr-2">
+                  <a
+                    href="#comment_form"
+                    onClick={sendCommentDataToForm}
+                    className="mr-2"
+                  >
                     <i className="fa-solid fa-pen-to-square"></i>
-                  </button>
+                  </a>
                   <button onClick={deleteComment}>
                     <i className="fa-solid fa-trash"></i>
                   </button>

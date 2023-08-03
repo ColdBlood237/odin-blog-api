@@ -54,11 +54,14 @@ export default function Post({ logged }) {
         <>
           <h1 className="text-5xl font-semibold	mb-8">{post.title}</h1>
           <p className="my-16">{post.content}</p>
-          <h2 className="text-3xl font-medium	">Comments</h2>
+          <h2 id="comment_form" className="text-3xl font-medium	">
+            Comments
+          </h2>
           <CommentForm
             logged={logged}
             post={post}
             commentToEdit={commentToEdit}
+            setCommentToEdit={setCommentToEdit}
           />
           {comments.map((comment) => (
             <CommentCard

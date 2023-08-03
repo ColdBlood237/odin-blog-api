@@ -20,6 +20,11 @@ router.put(
   comment_controller.update_comment
 );
 
+router.delete(
+  "/posts/:post_id/comments/:comment_id",
+  comment_controller.delete_comment
+);
+
 router.get("/validate-token", admin_controller.validate_token);
 
 module.exports = router;
