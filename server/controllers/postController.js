@@ -71,18 +71,15 @@ exports.update_post = [
     const updatedPost = new Post({
       title: req.body.title,
       content: req.body.content,
-      public: req.body.public ? true : false,
+      public: req.body.public,
       _id: req.params.id,
     });
 
     if (!errors.isEmpty()) {
-      const allPosts = await Post.find({ public: true })
-        .sort({ createdAt: -1 })
-        .exec();
-      res.json(allPosts, errors);
+      res.json(errors);
     } else {
-      await Post.findByIdAndUpdate(req.params.id, updatedPost);
-      res.redirect("/posts");
+      const result = await Post.findByIdAndUpdate(req.params.id, updatedPost);
+      res.send(`${result} successfully updated`);
     }
   }),
 ];
