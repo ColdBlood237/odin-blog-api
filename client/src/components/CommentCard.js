@@ -1,6 +1,7 @@
 "use client";
 
 import axios from "axios";
+import format from "date-format";
 
 export default function CommentCard({ logged, comment, setCommentToEdit }) {
   function sendCommentDataToForm() {
@@ -50,7 +51,12 @@ export default function CommentCard({ logged, comment, setCommentToEdit }) {
                 <></>
               )}
             </div>
-            <p className="text-gray-400 text-sm">{comment.createdAt}</p>
+            <p className="text-gray-400 text-sm">
+              {format.asString(
+                "dd/MM/yyyy at hh:mm",
+                new Date(comment.createdAt)
+              )}
+            </p>
           </div>
         </div>
         <p className="-mt-4 text-gray-500">{comment.content}</p>
