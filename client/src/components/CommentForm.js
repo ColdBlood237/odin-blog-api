@@ -37,7 +37,7 @@ export default function CommentForm({
     };
     try {
       await axios.put(
-        `/posts/${post._id}/comments/${_id}`,
+        `https://odin-blog-api-k82n.onrender.com/posts/${post._id}/comments/${_id}`,
         updatedComment,
         options
       );
@@ -55,7 +55,11 @@ export default function CommentForm({
       },
     };
     try {
-      await axios.post(`/posts/${post._id}/comments`, newComment, options);
+      await axios.post(
+        `https://odin-blog-api-k82n.onrender.com/posts/${post._id}/comments`,
+        newComment,
+        options
+      );
       window.location.reload();
     } catch (error) {
       console.error(error);

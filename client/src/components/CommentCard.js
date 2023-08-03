@@ -16,7 +16,7 @@ export default function CommentCard({ logged, comment, setCommentToEdit }) {
     };
     try {
       await axios.delete(
-        `/posts/${comment.post}/comments/${comment._id}`,
+        `https://odin-blog-api-k82n.onrender.com/posts/${comment.post}/comments/${comment._id}`,
         options
       );
       window.location.reload();

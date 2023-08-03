@@ -15,7 +15,9 @@ export default function Post({ logged }) {
         const endpoint = window.location.pathname;
         console.log(endpoint);
 
-        const response = await fetch(endpoint);
+        const response = await fetch(
+          `https://odin-blog-api-k82n.onrender.com${endpoint}`
+        );
 
         if (!response.ok) {
           const message = `An error occurred: ${response.statusText}`;
@@ -32,7 +34,9 @@ export default function Post({ logged }) {
       if (window.location) {
         const endpoint = window.location.pathname;
 
-        const response = await fetch(`${endpoint}/comments`);
+        const response = await fetch(
+          `https://odin-blog-api-k82n.onrender.com${endpoint}/comments`
+        );
 
         if (!response.ok) {
           const message = `An error occurred: ${response.statusText}`;

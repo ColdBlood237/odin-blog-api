@@ -16,11 +16,14 @@ export default function App() {
     async function validateToken() {
       const storedToken = localStorage.getItem("authToken");
       try {
-        await axios.get("/validate-token", {
-          headers: {
-            Authorization: storedToken,
-          },
-        });
+        await axios.get(
+          "https://odin-blog-api-k82n.onrender.com/validate-token",
+          {
+            headers: {
+              Authorization: storedToken,
+            },
+          }
+        );
         setLogged(true); // token is valid
       } catch (error) {
         setLogged(false); // token is not valid

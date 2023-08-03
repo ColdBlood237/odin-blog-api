@@ -16,7 +16,9 @@ export default function PostForm({ logged, action }) {
         );
         set_id(postID);
         try {
-          const response = await axios.get(`/posts/${postID}`);
+          const response = await axios.get(
+            `https://odin-blog-api-k82n.onrender.com/posts/${postID}`
+          );
           const postFetched = response.data;
           setTitle(postFetched.title);
           setContent(postFetched.content);
@@ -43,11 +45,15 @@ export default function PostForm({ logged, action }) {
     const updatedPost = { _id, title, content, public: publicBool };
     const storedToken = localStorage.getItem("authToken");
     try {
-      await axios.put(`/posts/${_id}`, updatedPost, {
-        headers: {
-          Authorization: storedToken,
-        },
-      });
+      await axios.put(
+        `https://odin-blog-api-k82n.onrender.com/posts/${_id}`,
+        updatedPost,
+        {
+          headers: {
+            Authorization: storedToken,
+          },
+        }
+      );
       window.location = "/";
     } catch (error) {
       console.error(error);
@@ -58,11 +64,15 @@ export default function PostForm({ logged, action }) {
     const newPost = { title, content, public: publicBool };
     const storedToken = localStorage.getItem("authToken");
     try {
-      await axios.post("/posts", newPost, {
-        headers: {
-          Authorization: storedToken,
-        },
-      });
+      await axios.post(
+        "https://odin-blog-api-k82n.onrender.com/posts",
+        newPost,
+        {
+          headers: {
+            Authorization: storedToken,
+          },
+        }
+      );
       window.location = "/";
     } catch (error) {
       alert(error);

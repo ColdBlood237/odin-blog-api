@@ -12,10 +12,13 @@ export default function LoginForm({ logged, setLogged }) {
   async function handleLogin(e) {
     e.preventDefault();
     try {
-      const response = await axios.post("/admin-login", {
-        username: usernameValue,
-        password: pwdValue,
-      });
+      const response = await axios.post(
+        "https://odin-blog-api-k82n.onrender.com/admin-login",
+        {
+          username: usernameValue,
+          password: pwdValue,
+        }
+      );
       const { token } = response.data;
       console.log(token);
       setLogged(true);

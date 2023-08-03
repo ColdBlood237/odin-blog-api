@@ -12,11 +12,14 @@ export default function PostCard({ logged, post }) {
     console.log(post._id);
     const storedToken = localStorage.getItem("authToken");
     try {
-      await axios.delete(`http://localhost:3000/posts/${post._id}`, {
-        headers: {
-          Authorization: storedToken,
-        },
-      });
+      await axios.delete(
+        `https://odin-blog-api-k82n.onrender.com/posts/${post._id}`,
+        {
+          headers: {
+            Authorization: storedToken,
+          },
+        }
+      );
       window.location.reload();
     } catch (error) {
       console.error(error);

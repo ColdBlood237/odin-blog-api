@@ -10,9 +10,12 @@ export default function Home({ logged, setLogged }) {
 
   useEffect(() => {
     async function getPosts() {
-      const response = await fetch("/posts", {
-        mode: "cors",
-      });
+      const response = await fetch(
+        "https://odin-blog-api-k82n.onrender.com/posts",
+        {
+          mode: "cors",
+        }
+      );
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -27,12 +30,15 @@ export default function Home({ logged, setLogged }) {
     async function getAllPosts() {
       const storedToken = localStorage.getItem("authToken");
 
-      const response = await fetch("/all-posts", {
-        mode: "cors",
-        headers: new Headers({
-          Authorization: storedToken,
-        }),
-      });
+      const response = await fetch(
+        "https://odin-blog-api-k82n.onrender.com/all-posts",
+        {
+          mode: "cors",
+          headers: new Headers({
+            Authorization: storedToken,
+          }),
+        }
+      );
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
