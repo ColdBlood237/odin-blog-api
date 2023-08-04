@@ -3,6 +3,7 @@
 import axios from "axios";
 import format from "date-format";
 import { Link } from "react-router-dom";
+import { LinkScroll, animateScroll as scroll } from "react-scroll";
 
 export default function CommentCard({ logged, comment, setCommentToEdit }) {
   function sendCommentDataToForm() {
@@ -37,13 +38,16 @@ export default function CommentCard({ logged, comment, setCommentToEdit }) {
               </p>
               {logged ? (
                 <div>
-                  <Link
-                    to="#comment_form"
+                  <LinkScroll
+                    to="comment_form"
+                    smooth={true}
+                    offset={100}
+                    duration={500}
                     onClick={sendCommentDataToForm}
                     className="mr-2"
                   >
                     <i className="fa-solid fa-pen-to-square"></i>
-                  </Link>
+                  </LinkScroll>
                   <button onClick={deleteComment}>
                     <i className="fa-solid fa-trash"></i>
                   </button>
