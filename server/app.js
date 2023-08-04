@@ -36,7 +36,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
-app.options("*", cors());
+app.use(
+  cors({
+    origin: "https://odin-blog-api-client.vercel.app",
+  })
+);
+
 app.use("/", indexRouter);
 app.use("/", passport.authenticate("jwt", { session: false }), adminsRouter);
 
