@@ -3,7 +3,7 @@
 import axios from "axios";
 import format from "date-format";
 import { Link } from "react-router-dom";
-import { LinkScroll, animateScroll as scroll } from "react-scroll";
+import { Link as LinkScroll, animateScroll as scroll } from "react-scroll";
 
 export default function CommentCard({ logged, comment, setCommentToEdit }) {
   function sendCommentDataToForm() {
