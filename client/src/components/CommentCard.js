@@ -41,7 +41,7 @@ export default function CommentCard({ logged, comment, setCommentToEdit }) {
                   <LinkScroll
                     to="comment_form"
                     smooth={true}
-                    duration={500}
+                    duration={200}
                     onClick={sendCommentDataToForm}
                     className="mr-2"
                   >
