@@ -117,7 +117,7 @@ export default function Home({ logged, setLogged }) {
       )}
       {logged ? (
         <div className="flex justify-center mb-8">
-          <a href="posts/create" className="mx-auto flex items-center gap-2">
+          <a href="/posts/create" className="mx-auto flex items-center gap-2">
             <i className="fa-regular fa-square-plus fa-2xl"></i>{" "}
             <span className="text-xl text-bold">Create a Post</span>
           </a>
