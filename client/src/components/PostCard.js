@@ -62,7 +62,7 @@ export default function PostCard({ logged, post }) {
       <p className="font-normal text-gray-700 dark:text-gray-400">
         {format.asString("dd/MM/yyyy at hh:mm", new Date(post.createdAt))}
       </p>
-      <Link to={`/#/posts/${post._id}`}>
+      <Link to={`/posts/${post._id}`}>
         <Button>
           <p>Read more</p>
           <svg
