@@ -54,7 +54,7 @@ export default function PostForm({ logged, action }) {
           },
         }
       );
-      window.location = "/";
+      window.location = "/#/";
     } catch (error) {
       console.error(error);
     }
@@ -73,7 +73,7 @@ export default function PostForm({ logged, action }) {
           },
         }
       );
-      window.location = "/";
+      window.location = "/#/";
     } catch (error) {
       alert(error);
     }
