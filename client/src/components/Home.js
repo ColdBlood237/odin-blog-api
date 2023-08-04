@@ -26,7 +26,6 @@ export default function Home({ logged, setLogged }) {
 
       const posts = await response.json();
       setPosts(posts);
-      console.log(posts);
     }
     async function getAllPosts() {
       const storedToken = localStorage.getItem("authToken");

@@ -20,7 +20,6 @@ export default function LoginForm({ logged, setLogged }) {
         }
       );
       const { token } = response.data;
-      console.log(token);
       setLogged(true);
       localStorage.setItem("authToken", token);
     } catch (error) {
