@@ -38,7 +38,7 @@ export default function CommentCard({ logged, comment, setCommentToEdit }) {
               {logged ? (
                 <div>
                   <Link
-                    to="/#comment_form"
+                    to="#comment_form"
                     onClick={sendCommentDataToForm}
                     className="mr-2"
                   >
