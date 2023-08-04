@@ -38,15 +38,16 @@ export default function CommentCard({ logged, comment, setCommentToEdit }) {
               </p>
               {logged ? (
                 <div>
-                  <LinkScroll
-                    to="comment_form"
-                    smooth={true}
-                    duration={200}
-                    onClick={sendCommentDataToForm}
-                    className="mr-2"
-                  >
-                    <i className="fa-solid fa-pen-to-square"></i>
-                  </LinkScroll>
+                  <button className="mr-2">
+                    <LinkScroll
+                      to="comment_form"
+                      smooth={true}
+                      duration={100}
+                      onClick={sendCommentDataToForm}
+                    >
+                      <i className="fa-solid fa-pen-to-square"></i>
+                    </LinkScroll>
+                  </button>
                   <button onClick={deleteComment}>
                     <i className="fa-solid fa-trash"></i>
                   </button>
