@@ -35,7 +35,7 @@ export default function Post({ logged }) {
         const endpoint = window.location.pathname;
 
         const response = await fetch(
-          `https://odin-blog-api-k82n.onrender.com${endpoint}/comments`
+          `https://odin-blog-api-k82n.onrender.com${endpoint}comments`
         );
 
         if (!response.ok) {
