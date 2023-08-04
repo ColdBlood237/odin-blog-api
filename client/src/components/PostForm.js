@@ -10,8 +10,8 @@ export default function PostForm({ logged, action }) {
   useEffect(() => {
     if (action === "edit") {
       async function getPost() {
-        const postID = window.location.pathname.replace(
-          /\/posts\/([^/]+)\/edit/,
+        const postID = window.location.hash.replace(
+          /#\/posts\/(.+)\/edit/,
           "$1"
         );
         set_id(postID);
