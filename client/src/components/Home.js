@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import uniqid from "uniqid";
+import { Link } from "react-router-dom";
 
 import Hero from "./Hero";
 import LoginForm from "./LoginForm";
@@ -117,10 +118,10 @@ export default function Home({ logged, setLogged }) {
       )}
       {logged ? (
         <div className="flex justify-center mb-8">
-          <a href="/#/posts/create" className="mx-auto flex items-center gap-2">
+          <Link to="/posts/create" className="mx-auto flex items-center gap-2">
             <i className="fa-regular fa-square-plus fa-2xl"></i>{" "}
             <span className="text-xl text-bold">Create a Post</span>
-          </a>
+          </Link>
         </div>
       ) : (
         <div id="login" className="mx-12 mb-12">

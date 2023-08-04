@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import format from "date-format";
+import { Link } from "react-router-dom";
 
 export default function CommentCard({ logged, comment, setCommentToEdit }) {
   function sendCommentDataToForm() {
@@ -36,13 +37,13 @@ export default function CommentCard({ logged, comment, setCommentToEdit }) {
               </p>
               {logged ? (
                 <div>
-                  <a
-                    href="/#/#comment_form"
+                  <Link
+                    to="/#comment_form"
                     onClick={sendCommentDataToForm}
                     className="mr-2"
                   >
                     <i className="fa-solid fa-pen-to-square"></i>
-                  </a>
+                  </Link>
                   <button onClick={deleteComment}>
                     <i className="fa-solid fa-trash"></i>
                   </button>
