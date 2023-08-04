@@ -13,7 +13,6 @@ export default function Post({ logged }) {
     async function getPost() {
       if (window.location) {
         const endpoint = window.location.hash.replace("#", "");
-        console.log(endpoint);
 
         const response = await fetch(
           `https://odin-blog-api-k82n.onrender.com${endpoint}`
