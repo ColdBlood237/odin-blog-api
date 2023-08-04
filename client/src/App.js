@@ -69,7 +69,7 @@ export default function App() {
           element={<PostForm logged={logged} action="edit" />}
         />
         <Route
-          path="posts/create"
+          path="/posts/create"
           element={<PostForm logged={logged} action="create" />}
         />
       </Routes>
